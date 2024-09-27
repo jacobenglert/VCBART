@@ -1,5 +1,6 @@
 export("VCBART_ind")
 export("VCBART_cs")
+export("gVCBART_ind")
 export("summarize_beta")
 export("predict_betas")
 importFrom("Rcpp", "evalCpp")

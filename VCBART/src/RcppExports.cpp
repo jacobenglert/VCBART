@@ -11,6 +11,54 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// gvcbart_ind_fit
+Rcpp::List gvcbart_ind_fit(Rcpp::NumericVector Y_train, Rcpp::IntegerVector subj_id_train, Rcpp::IntegerVector ni_train, Rcpp::NumericMatrix tX_train, Rcpp::NumericMatrix tW_train, Rcpp::NumericMatrix tZ_cont_train, Rcpp::IntegerMatrix tZ_cat_train, Rcpp::NumericMatrix tX_test, Rcpp::NumericMatrix tW_test, Rcpp::NumericMatrix tZ_cont_test, Rcpp::IntegerMatrix tZ_cat_test, Rcpp::LogicalVector unif_cuts, Rcpp::Nullable<Rcpp::List> cutpoints_list, Rcpp::Nullable<Rcpp::List> cat_levels_list, Rcpp::Nullable<Rcpp::List> edge_mat_list, Rcpp::LogicalVector graph_split, int graph_cut_type, bool rc_split, double prob_rc, double a_rc, double b_rc, bool sparse, double a_u, double b_u, Rcpp::NumericVector mu0, Rcpp::NumericVector tau, Rcpp::NumericVector gamma0, Rcpp::NumericVector xi, double lambda, double nu, int M, int nd, int burn, int thin, bool save_samples, bool save_trees, bool verbose, int print_every);
+RcppExport SEXP _VCBART_gvcbart_ind_fit(SEXP Y_trainSEXP, SEXP subj_id_trainSEXP, SEXP ni_trainSEXP, SEXP tX_trainSEXP, SEXP tW_trainSEXP, SEXP tZ_cont_trainSEXP, SEXP tZ_cat_trainSEXP, SEXP tX_testSEXP, SEXP tW_testSEXP, SEXP tZ_cont_testSEXP, SEXP tZ_cat_testSEXP, SEXP unif_cutsSEXP, SEXP cutpoints_listSEXP, SEXP cat_levels_listSEXP, SEXP edge_mat_listSEXP, SEXP graph_splitSEXP, SEXP graph_cut_typeSEXP, SEXP rc_splitSEXP, SEXP prob_rcSEXP, SEXP a_rcSEXP, SEXP b_rcSEXP, SEXP sparseSEXP, SEXP a_uSEXP, SEXP b_uSEXP, SEXP mu0SEXP, SEXP tauSEXP, SEXP gamma0SEXP, SEXP xiSEXP, SEXP lambdaSEXP, SEXP nuSEXP, SEXP MSEXP, SEXP ndSEXP, SEXP burnSEXP, SEXP thinSEXP, SEXP save_samplesSEXP, SEXP save_treesSEXP, SEXP verboseSEXP, SEXP print_everySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type Y_train(Y_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type subj_id_train(subj_id_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type ni_train(ni_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tX_train(tX_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tW_train(tW_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tZ_cont_train(tZ_cont_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type tZ_cat_train(tZ_cat_trainSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tX_test(tX_testSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tW_test(tW_testSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type tZ_cont_test(tZ_cont_testSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type tZ_cat_test(tZ_cat_testSEXP);
+    Rcpp::traits::input_parameter< Rcpp::LogicalVector >::type unif_cuts(unif_cutsSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::List> >::type cutpoints_list(cutpoints_listSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::List> >::type cat_levels_list(cat_levels_listSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::List> >::type edge_mat_list(edge_mat_listSEXP);
+    Rcpp::traits::input_parameter< Rcpp::LogicalVector >::type graph_split(graph_splitSEXP);
+    Rcpp::traits::input_parameter< int >::type graph_cut_type(graph_cut_typeSEXP);
+    Rcpp::traits::input_parameter< bool >::type rc_split(rc_splitSEXP);
+    Rcpp::traits::input_parameter< double >::type prob_rc(prob_rcSEXP);
+    Rcpp::traits::input_parameter< double >::type a_rc(a_rcSEXP);
+    Rcpp::traits::input_parameter< double >::type b_rc(b_rcSEXP);
+    Rcpp::traits::input_parameter< bool >::type sparse(sparseSEXP);
+    Rcpp::traits::input_parameter< double >::type a_u(a_uSEXP);
+    Rcpp::traits::input_parameter< double >::type b_u(b_uSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mu0(mu0SEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type tau(tauSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type gamma0(gamma0SEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type nu(nuSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type nd(ndSEXP);
+    Rcpp::traits::input_parameter< int >::type burn(burnSEXP);
+    Rcpp::traits::input_parameter< int >::type thin(thinSEXP);
+    Rcpp::traits::input_parameter< bool >::type save_samples(save_samplesSEXP);
+    Rcpp::traits::input_parameter< bool >::type save_trees(save_treesSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    Rcpp::traits::input_parameter< int >::type print_every(print_everySEXP);
+    rcpp_result_gen = Rcpp::wrap(gvcbart_ind_fit(Y_train, subj_id_train, ni_train, tX_train, tW_train, tZ_cont_train, tZ_cat_train, tX_test, tW_test, tZ_cont_test, tZ_cat_test, unif_cuts, cutpoints_list, cat_levels_list, edge_mat_list, graph_split, graph_cut_type, rc_split, prob_rc, a_rc, b_rc, sparse, a_u, b_u, mu0, tau, gamma0, xi, lambda, nu, M, nd, burn, thin, save_samples, save_trees, verbose, print_every));
+    return rcpp_result_gen;
+END_RCPP
+}
 // predict_vcbart
 arma::cube predict_vcbart(Rcpp::List tree_draws, int p, int M, Rcpp::NumericMatrix tZ_cont, Rcpp::IntegerMatrix tZ_cat, bool verbose);
 RcppExport SEXP _VCBART_predict_vcbart(SEXP tree_drawsSEXP, SEXP pSEXP, SEXP MSEXP, SEXP tZ_contSEXP, SEXP tZ_catSEXP, SEXP verboseSEXP) {
@@ -148,6 +196,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_VCBART_gvcbart_ind_fit", (DL_FUNC) &_VCBART_gvcbart_ind_fit, 38},
     {"_VCBART_predict_vcbart", (DL_FUNC) &_VCBART_predict_vcbart, 6},
     {"_VCBART_rescale_beta_mean", (DL_FUNC) &_VCBART_rescale_beta_mean, 5},
     {"_VCBART_rescale_beta", (DL_FUNC) &_VCBART_rescale_beta, 5},
