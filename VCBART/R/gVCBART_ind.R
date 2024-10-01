@@ -100,7 +100,7 @@ gVCBART_ind <- function(Y_train,
   if(is.null(lambda)) lambda <- stats::qchisq(0.1, df = nu)/nu
   
   if(is.null(gamma0)) gamma0 <- rep(0, times = ncol(W_train))
-  if(is.null(xi)) xi <- rep(10, times = ncol(W_train))
+  if(is.null(xi)) xi <- rep(100, times = ncol(W_train))
   
   # hyperparameters for the Dirichlet prior on splitting probs
   a_u <- 0.5
