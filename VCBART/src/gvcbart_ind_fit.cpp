@@ -85,7 +85,8 @@ Rcpp::List gvcbart_ind_fit(Rcpp::NumericVector Y_train,
   
   double* allfit_train = new double[N_train]; // holds fit of regression function
   double* beta_fit_train = new double[p*N_train]; // holds fit of each coefficient function. beta_fit_train[j + i * p] is for obs i coefficient j
-  double* gamma = new double[p_w];
+  // double* gamma = new double[p_w];
+  arma::vec gamma = arma::zeros<arma::vec>(p_w);
   
   double* residual = new double[N_train];
   
@@ -502,21 +503,24 @@ Rcpp::List gvcbart_ind_fit(Rcpp::NumericVector Y_train,
       }
     }
     
-    
+    // 2. Update gamma using the adjusted residual (that no longer includes gamma contribution)
     arma::vec res_gamma(residual, N_train, false);
     arma::vec WTr = tW_train_arma * res_gamma;
-    arma::mat post_prec = WTW / (sigma * sigma) + prior_prec;
-    arma::vec post_mean = arma::solve(post_prec, WTr / (sigma * sigma) + prior_prec * gamma0_arma);
-    arma::vec gamma_draw = post_mean + arma::chol(arma::inv_sympd(post_prec)) * arma::randn<arma::vec>(gamma0.size());
+    arma::mat post_prec = WTW / pow(sigma, 2) + prior_prec;
+    arma::vec post_theta = WTr / pow(sigma, 2) + prior_prec * gamma0_arma;
+    gamma = gen.mvnormal(post_theta, post_prec);
+    
+    // arma::vec res_gamma(residual, N_train, false);
+    // arma::vec WTr = tW_train_arma * res_gamma;
+    // arma::mat post_prec = WTW / (sigma * sigma) + prior_prec;
+    // arma::vec post_mean = arma::solve(post_prec, WTr / (sigma * sigma) + prior_prec * gamma0_arma);
+    // arma::vec gamma_draw = post_mean + arma::chol(arma::inv_sympd(post_prec)) * arma::randn<arma::vec>(gamma0.size());
     
     
-    // Update gamma_fit_train with the draw from the posterior
-    for (int j = 0; j < p_w; j++) {
-      gamma[j] = gamma_draw[j];
-    }
-    
-    // 2. Update gamma using the adjusted residual (that no longer includes gamma contribution)
-    // update_gamma(gamma_fit_train, tW_train, residual, gamma0, xi, sigma, N_train);  // Call gamma update with the adjusted residual
+    // // Update gamma_fit_train with the draw from the posterior
+    // for (int j = 0; j < p_w; j++) {
+    //   gamma[j] = gamma_draw[j];
+    // }
     
     // 3. Add the updated contribution of gamma back to allfit_train, residual, r_sum, and r2_sum
     for (int i = 0; i < N_train; i++) {
@@ -648,7 +652,7 @@ Rcpp::List gvcbart_ind_fit(Rcpp::NumericVector Y_train,
   delete[] allfit_test;
   delete[] beta_fit_train;
   delete[] beta_fit_test;
-  delete[] gamma;
+  //delete[] gamma;
   delete[] residual;
   delete[] r_sum;
   delete[] r2_sum;
