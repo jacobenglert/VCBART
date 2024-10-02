@@ -181,10 +181,10 @@ gVCBART_ind <- function(Y_train,
   results[["yhat.train.mean"]] <- yhat_train_mean
   results[["betahat.train.mean"]] <- beta_train_mean
   results[["gammahat.mean"]] <- gamma_mean
+  results[["gammahat"]] <- gamma
   if(save_samples){
     results[["yhat.train"]] <- yhat_train
     results[["betahat.train"]] <- beta_train
-    results[["gammahat"]] <- gamma
   }
   if(!is.null(fit$fit_test_mean)){
     results[["yhat.test.mean"]] <- yhat_test_mean

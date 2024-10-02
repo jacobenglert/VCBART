@@ -13,3 +13,6 @@ testing/*
 *.out
 *.synctex.gz
 *.Rcheck
+.Rproj.user
+*.Rproj
+VCBART/src/*.so
