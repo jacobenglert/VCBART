@@ -10,5 +10,13 @@ predict_betas <- function(fit,
                          p = p, M = M,
                          tZ_cont = t(Z_cont), tZ_cat = t(Z_cat), verbose = verbose)
   out <- rescale_beta(tmp, fit$y_mean, fit$y_sd, fit$x_mean, fit$x_sd)
+  
+  # Apply further rescaling to intercept if fixed effects are present
+  if (!is.null(fit$w_mean)) {
+    for (j in 1:length(fit$w_mean)) {
+      out[,,1] <- sweep(out[,,1], 1, fit$gammahat[,j] * fit$w_mean[j], '-')
+    }
+  }
+  
   return(out)
 }
